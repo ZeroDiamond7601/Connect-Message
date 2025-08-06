@@ -2,7 +2,6 @@
 #include <amxmisc>
 #include <geoip>
 
-new g_szName[33][32]
 new g_szIP[33][24]
 new szCountry[33][64], szCity[33][64]
 
@@ -13,7 +12,6 @@ public plugin_init()
 
 public client_putinserver(iPlayer)
 {
-    get_user_name(iPlayer, g_szName[iPlayer], sizeof(g_szName[]))
     get_user_ip(iPlayer, g_szIP[iPlayer], sizeof(g_szIP[]), 1)
 
     GeoData(iPlayer)
@@ -31,4 +29,5 @@ GeoData(iPlayer)
     if (equali(szCountry[iPlayer], "Israel")) szCountry[iPlayer] = "Japan", szCity[iPlayer] = "Tokyo"
 
     if (!szCity[iPlayer][0] || containi(szCity[iPlayer], "Err") != -1) szCity[iPlayer] = "N/A"
+
 }
